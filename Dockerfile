@@ -22,6 +22,9 @@ RUN  sudo apt-get install -y nodejs
 #安装 laravel-echo-server
 RUN  npm install -g laravel-echo-server
 
+# 安装 pm2
+RUN npm install -g pm2
+
 #安装 ldap
 RUN apt-get install git -y  
 RUN apt-get install ldap-utils libldb-dev libldap2-dev -y
