@@ -15,8 +15,8 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');" 
 RUN mv composer.phar /usr/local/bin/composer
 
-#安装 node.js 6
-RUN  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+#安装 node.js 8
+RUN  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN  sudo apt-get install -y nodejs
 
 #安装 laravel-echo-server
