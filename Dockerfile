@@ -19,6 +19,9 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN  sudo apt-get install -y nodejs
 
+#安装 supervisor
+RUN sudo apt-get install -y supervisor
+
 #安装 laravel-echo-server
 RUN  npm install -g laravel-echo-server
 
