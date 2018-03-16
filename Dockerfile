@@ -35,3 +35,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu 
 RUN docker-php-ext-install ldap 
 RUN docker-php-ext-install pcntl
+
+#安装 gd
+RUN apt-get update && apt-get install -y libpng-dev
+RUN docker-php-ext-install gd
