@@ -37,5 +37,8 @@ RUN docker-php-ext-install ldap
 RUN docker-php-ext-install pcntl
 
 #安装 gd
-RUN apt-get update && apt-get install -y libpng-dev
+RUN apt-get update && apt-get install -y libpng-dev  && apt-get  install -y zlib1g-dev && apt-get install -y wget
+
 RUN docker-php-ext-install gd
+
+RUN docker-php-ext-install zip
