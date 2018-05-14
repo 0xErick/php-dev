@@ -9,10 +9,10 @@ RUN pecl install -o -f redis \
     &&  rm -rf /tmp/pear \
     &&  echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini
 
-# composer 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" 
-RUN php composer-setup.php 
-RUN php -r "unlink('composer-setup.php');" 
+# composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
 #安装 node.js 8
@@ -29,11 +29,11 @@ RUN  npm install -g laravel-echo-server
 RUN npm install -g pm2
 
 #安装 ldap
-RUN apt-get install git -y  
+RUN apt-get install git -y
 RUN apt-get install ldap-utils libldb-dev libldap2-dev -y
 RUN rm -rf /var/lib/apt/lists/*
-RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu 
-RUN docker-php-ext-install ldap 
+RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu
+RUN docker-php-ext-install ldap
 RUN docker-php-ext-install pcntl
 
 #安装 gd
@@ -42,3 +42,7 @@ RUN apt-get update && apt-get install -y libpng-dev  && apt-get  install -y zlib
 RUN docker-php-ext-install gd
 
 RUN docker-php-ext-install zip
+
+##mongodb.so
+RUN cd /usr/local/src/ && wget http://pecl.php.net/get/mongodb-1.4.3.tgz && tar -zxvf mongodb-1.4.3.tgz
+RUN cd mongodb-1.4.3 && sudo apt install -y libssl-dev  && phpize && ./configure && make && make install
